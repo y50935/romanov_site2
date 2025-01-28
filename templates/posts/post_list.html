@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>ПК Реаниматор</h1>
+    {% for post in posts %}
+        <div class="post">
+            <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 150px; height: auto; margin-bottom: 10px;">
+                {% endif %}
+            <p>Автор: {{ post.author }} | Дата: {{ post.created_at }}</p>
+            {% if user.is_staff or post.author == user %}
+                <button onclick="confirmDelete('{% url 'post_delete' post.id %}')">Удалить</button>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <script>
+    function confirmDelete(url) {
+        if (confirm("Вы уверены, что хотите удалить этот пост?")) {
+            window.location.href = url;
+        }
+    }
+    </script>
+{% endblock %}

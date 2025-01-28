@@ -1,0 +1,157 @@
+/* static/css/styles.css */
+
+:root {
+    --md-sys-color-primary: #00A886;
+    --md-sys-color-on-primary: #FFFFFF;
+    --md-sys-color-primary-container: #A5D6A7;
+    --md-sys-color-on-primary-container: #0A2D0E;
+    --md-sys-color-secondary: #2E7D32;
+    --md-sys-color-on-secondary: #FFFFFF;
+    --md-sys-color-secondary-container: #81C784;
+    --md-sys-color-on-secondary-container: #0A2D0E;
+    --md-sys-color-tertiary: #004D40;
+    --md-sys-color-on-tertiary: #FFFFFF;
+    --md-sys-color-tertiary-container: #4DB6AC;
+    --md-sys-color-on-tertiary-container: #001D18;
+    --md-sys-color-error: #BA1A1A;
+    --md-sys-color-on-error: #FFFFFF;
+    --md-sys-color-error-container: #FFDAD6;
+    --md-sys-color-on-error-container: #410002;
+    --md-sys-color-outline: #79747E;
+    --md-sys-color-background: #E4E4E4;
+    --md-sys-color-on-background: #1C1B1F;
+    --md-sys-color-surface: #FFFFFF;
+    --md-sys-color-on-surface: #1C1B1F;
+    --md-sys-color-surface-variant: #E0F2F1;
+    --md-sys-color-on-surface-variant: #49454F;
+    --md-sys-color-inverse-surface: #313033;
+    --md-sys-color-inverse-on-surface: #F4EFF4;
+    --md-sys-color-inverse-primary: #D0BCFF;
+    --md-sys-shadow: #000000;
+    --md-sys-elevation-shadow-2: 0px 2px 3px -1px rgba(0, 0, 0, 0.2), 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-background);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 800px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--md-sys-color-primary);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+nav {
+        background-color: #000;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: var(--md-sys-elevation-shadow-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+}
+
+nav a {
+    margin-right: 15px;
+    color: #fff; /* Белый текст */
+}
+
+nav span {
+    margin-right: 15px;
+    color: #fff; /* Белый текст */
+    font-weight: bold;
+}
+
+nav a:last-child {
+    margin-right: 0;
+}
+
+.post {
+    background-color: var(--md-sys-color-surface);
+    box-shadow: var(--md-sys-elevation-shadow-2);
+    margin-bottom: 15px;
+    padding: 15px;
+    transition: background-color 0.3s;
+      border-radius: 0;
+}
+
+.post h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: var(--md-sys-color-primary);
+}
+
+.post p {
+    margin-bottom: 10px;
+}
+
+button, input[type='submit'] {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 0;
+}
+
+button:hover, input[type='submit']:hover {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+}
+
+form {
+    background-color: var(--md-sys-color-surface);
+    box-shadow: var(--md-sys-elevation-shadow-2);
+    padding: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+     border-radius: 0;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--md-sys-color-on-surface);
+}
+
+form input[type="text"], form textarea, form input[type="email"], form input[type="password"] {
+    width: calc(100% - 10px);
+    padding: 8px;
+    border: 1px solid var(--md-sys-color-outline);
+    margin-bottom: 10px;
+    border-radius: 0;
+}
+
+.comment {
+    background-color: var(--md-sys-color-surface-variant);
+    box-shadow: var(--md-sys-elevation-shadow-2);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 0;
+}

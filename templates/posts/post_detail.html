@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <p>Автор: {{ post.author }} | Дата: {{ post.created_at }}</p>
+    {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 300px; height: auto; margin-bottom: 20px;">
+    {% endif %}
+    <p>{{ post.content }}</p>
+    {% if user.is_staff or post.author == user %}
+        <button onclick="confirmDelete('{% url 'post_delete' post.id %}')">Удалить</button>
+    {% endif %}
+
+    <h2>Комментарии</h2>
+    {% for comment in post.comments.all %}
+        <div class="comment">
+        <p>
+            <strong>{{ comment.author.username }}</strong>: {{ comment.text }}
+            {% if user.is_staff or comment.author == user %}
+                <button onclick="confirmCommentDelete('{% url 'delete_comment' comment.id %}')">Удалить</button>
+            {% endif %}
+        </p>
+            <p><small>Опубликовано: {{ comment.created_at }}</small></p>
+        </div>
+    {% empty %}
+        <p>Нет комментариев</p>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'add_comment' post.id %}">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit">Добавить комментарий</button>
+        </form>
+    {% else %}
+        <p>Для добавления комментария нужно войти</p>
+    {% endif %}
+<script>
+    function confirmDelete(url) {
+        if (confirm("Вы уверены, что хотите удалить этот пост?")) {
+            window.location.href = url;
+        }
+    }
+    function confirmCommentDelete(url) {
+        if (confirm("Вы уверены, что хотите удалить этот комментарий?")) {
+            window.location.href = url;
+        }
+    }
+</script>
+{% endblock %}
